@@ -2,8 +2,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h1>fgsadgtsg</h1>
-    </div>
+    <h1>Prikaz</h1>
+    <asp:GridView ID="grd1" runat="server"></asp:GridView>
 
 </asp:Content>
