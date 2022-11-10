@@ -3,23 +3,20 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <h1>Prikaz</h1>
-    Izaberite teretanu:<asp:DropDownList ID="ddlTeretana" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2">
-    </asp:DropDownList>
-    <asp:GridView ID="grd1" runat="server" AutoGenerateColumns="False" DataKeyNames="idOsobe" DataSourceID="SqlDataSource2">
+    Izaberite teretanu:<asp:DropDownList ID="ddl" runat="server" AutoPostBack="True"></asp:DropDownList>
+    <br />
+    <br />
+    <asp:GridView ID="grd" runat="server" AutoGenerateColumns="False">
         <Columns>
-            <asp:BoundField HeaderText="idOsobe" DataField="idOsobe" InsertVisible="False" ReadOnly="True" />
-            <asp:BoundField HeaderText="ime" DataField="ime"/>
-            <asp:BoundField HeaderText="prezime" DataField="prezime"/>
-            <asp:BoundField HeaderText="datumRodjenja" DataField="datumRodjenja" />
-            <asp:BoundField HeaderText="kontakt" DataField="kontakt" />
-            <asp:BoundField HeaderText="idTeretane" DataField="idTeretane" />
+            <asp:BoundField DataField="idOsobe" HeaderText="idOsobe" />
+            <asp:BoundField DataField="ime" HeaderText="ime" />
+            <asp:BoundField DataField="prezime" HeaderText="prezime" />
+            <asp:BoundField DataField="datumRodjenja" HeaderText="datumRodjenja" />
+            <asp:BoundField DataField="kontakt" HeaderText="kontakt" />
+            <asp:BoundField DataField="idTeretane" HeaderText="idTeretane" />
         </Columns>
-    </asp:GridView>
+</asp:GridView>
 
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:TeretanaConnectionString3 %>" SelectCommand="SELECT * FROM [Osoba] WHERE ([idTeretane] = @idTeretane)" ProviderName="System.Data.SqlClient">
-        <SelectParameters>
-            <asp:ControlParameter ControlID="ddlTeretana" Name="idTeretane" PropertyName="SelectedValue" Type="Int32" />
-        </SelectParameters>
-    </asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TeretanaConnectionString4 %>" SelectCommand="SELECT * FROM [Osoba]"></asp:SqlDataSource>
 
 </asp:Content>
