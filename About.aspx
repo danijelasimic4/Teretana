@@ -17,6 +17,8 @@
     ID teretane:<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
     <br />
     <br />
-    <asp:Button ID="btnDodaj" runat="server" Text="Dodaj" />
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+    <asp:Label Text="text" runat="server" ID="Label1" />
+    <asp:Button ID="btnDodaj" runat="server" Text="Dodaj" OnClick="btnDodaj_Click" />
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TeretanaConnectionString2 %>" SelectCommand="SELECT * FROM [Osoba]"></asp:SqlDataSource>
 </asp:Content>
+
