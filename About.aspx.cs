@@ -25,6 +25,7 @@ namespace Teretana
                 {
                     conn.Open();
                     string cmdInsert = "INSERT INTO Osoba(ime, prezime,datumRodjenja,kontakt,idTeretane) VALUES(@ime,@prezime,@datumRodjenja, @kontakt, @idTeretane)";
+
                     using (SqlCommand cmd = new SqlCommand(cmdInsert, conn))
                     {
 
@@ -32,14 +33,9 @@ namespace Teretana
                         cmd.Parameters.AddWithValue("@prezime", TextBox2.Text);
                         cmd.Parameters.AddWithValue("@datumRodjenja", TextBox3.Text);
                         cmd.Parameters.AddWithValue("@kontakt", TextBox4.Text);
-                        cmd.Parameters.AddWithValue("@idTeretane", TextBox4.Text);
-                        Label1.Text = "Dodat je novi";
-                        /*int dodat = cmd.ExecuteNonQuery();
-                        if (dodat == 1)
-                        {
-                            
-                            FillDropDownList();
-                        }*/
+                        cmd.Parameters.AddWithValue("@idTeretane", Int32.Parse(TextBox5.Text));
+                       
+                        cmd.ExecuteNonQuery();
                     }
                 }
                 catch (System.Data.SqlClient.SqlException ex)
