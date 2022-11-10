@@ -18,40 +18,32 @@ namespace Teretana
                 FillDropDownList();
             }
         }
-        protected void FillDropDownList()
+        public void FillDropDownList()
         {
             ddlTeretana.Items.Clear();
             ddlTeretana.Items.Add(new ListItem("Selektujte teretanu:"));
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = Connection.conString;
-            SqlDataReader reader;
-
-            SqlCommand cmd = new SqlCommand("Select idOsobe, idTeretane from Osoba", con);
-            using (con)
+            using (SqlConnection conn = new SqlConnection(Connection.conString))
             {
-                try
+                conn.Open();
+                string cmdSelect = "SELECT idTeretane,idOsobe FROM Osoba";
+                using (SqlCommand cmd = new SqlCommand(cmdSelect, conn))
                 {
-                    con.Open();
-                    reader = cmd.ExecuteReader();
+                    SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         ListItem item = new ListItem();
-                        item.Text = reader["idTerertane"].ToString();
+                        item.Text = reader["idTeretane"].ToString();
                         item.Value = reader["idOsobe"].ToString();
                         ddlTeretana.Items.Add(item);
                     }
                     reader.Close();
                 }
-                catch (Exception ex)
-                {
-                    
-                }
             }
-        }
 
+        }
         protected void ddlTeretana_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string SqlSelect = "Select * from Employees where EmployeeID='" + ddlTeretana.SelectedItem.Value + "'";
+            string SqlSelect = "Select * from Osoba where idOsobe='" + ddlTeretana.SelectedItem.Value + "'";
             SqlConnection con = new SqlConnection(); 
             con.ConnectionString = Connection.conString;
             SqlCommand cmd = new SqlCommand(SqlSelect, con); 
