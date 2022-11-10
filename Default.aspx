@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <h1>Prikaz</h1>
-    Izaberite teretanu:<asp:DropDownList ID="ddlTeretana" runat="server" AutoPostBack="True"></asp:DropDownList>
+    Izaberite teretanu:<asp:DropDownList ID="ddlTeretana" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlTeretana_SelectedIndexChanged"></asp:DropDownList>
     <asp:GridView ID="grd1" runat="server" AutoGenerateColumns="False">
         <Columns>
             <asp:BoundField HeaderText="idOsobe" />
@@ -17,6 +17,5 @@
     </asp:GridView>
 
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TeretanaConnectionString %>" SelectCommand="SELECT * FROM [Osoba]"></asp:SqlDataSource>
-    <asp:Label ID="lblMessage" runat="server"></asp:Label>
 
 </asp:Content>

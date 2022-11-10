@@ -21,13 +21,13 @@ namespace Teretana
         protected void FillDropDownList()
         {
             ddlTeretana.Items.Clear();
-            ddlTeretana.Items.Add(new ListItem("Selektujte zaposlenog"));
+            ddlTeretana.Items.Add(new ListItem("Selektujte teretanu:"));
             SqlConnection con = new SqlConnection();
             con.ConnectionString = Connection.conString;
             SqlDataReader reader;
-           
- SqlCommand cmd = new SqlCommand("Select FirstName, LastName, EmployeeID from Employees", con);
- using (con)
+
+            SqlCommand cmd = new SqlCommand("Select idOsobe, idTeretane from Osoba", con);
+            using (con)
             {
                 try
                 {
@@ -36,16 +36,45 @@ namespace Teretana
                     while (reader.Read())
                     {
                         ListItem item = new ListItem();
-                        item.Text = reader["FirstName"].ToString() + " " +
-                       reader["LastName"].ToString();
-                        item.Value = reader["EmployeeID"].ToString();
+                        item.Text = reader["idTerertane"].ToString();
+                        item.Value = reader["idOsobe"].ToString();
                         ddlTeretana.Items.Add(item);
                     }
                     reader.Close();
                 }
                 catch (Exception ex)
                 {
-                    lblMessage.Text = "Desila se greška";
-                    lblMessage.Text += ex.Message;
+                    
                 }
+            }
+        }
+
+        protected void ddlTeretana_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string SqlSelect = "Select * from Employees where EmployeeID='" + ddlTeretana.SelectedItem.Value + "'";
+            SqlConnection con = new SqlConnection(); 
+            con.ConnectionString = Connection.conString;
+            SqlCommand cmd = new SqlCommand(SqlSelect, con); 
+            SqlDataReader reader; 
+            using (con)
+            {
+                try
+                {
+                    con.Open();
+                    reader = cmd.ExecuteReader(); 
+                    reader.Read(); 
+
+                   
+                    reader.Close();
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                }
+            }
+
+        }
+
+    }
 }
