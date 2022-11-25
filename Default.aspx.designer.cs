@@ -24,13 +24,13 @@ namespace Teretana
         protected global::System.Web.UI.WebControls.DropDownList ddl;
 
         /// <summary>
-        /// grd control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grd;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
         /// SqlDataSource1 control.

@@ -7,6 +7,6 @@ namespace Teretana
 {
     public class Connection
     {
-        public static string conString = @"Data Source=DESKTOP-47RA6PS\sqlexpress;Initial Catalog = Teretana; Integrated Security = True";
+        public static string conString = @"Data Source=.\sqlexpress;Initial Catalog = Teretana; Integrated Security = True";
     }
 }

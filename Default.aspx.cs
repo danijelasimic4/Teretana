@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Data;
 
 
 namespace Teretana
@@ -25,52 +26,58 @@ namespace Teretana
             using (SqlConnection conn = new SqlConnection(Connection.conString))
             {
                 conn.Open();
-                string cmdSelect = "SELECT idTeretane,idOsobe FROM Osoba";
+                string cmdSelect = "SELECT idTeretane,naziv FROM Teretana";
                 using (SqlCommand cmd = new SqlCommand(cmdSelect, conn))
                 {
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         ListItem item = new ListItem();
-                        item.Text = reader["idTeretane"].ToString();
-                        item.Value = reader["idOsobe"].ToString();
+                        item.Text = reader["naziv"].ToString();
+                        item.Value = reader["idTeretane"].ToString();
                         ddl.Items.Add(item);
                     }
                     reader.Close();
                 }
             }
-
-
-            /*protected void ddlTeretana_SelectedIndexChanged(object sender, EventArgs e)
-            {
-                string SqlSelect = "Select * from Osoba where idOsobe='" + ddlTeretana.SelectedItem.Value + "'";
-                SqlConnection con = new SqlConnection(); 
-                con.ConnectionString = Connection.conString;
-                SqlCommand cmd = new SqlCommand(SqlSelect, con); 
-                SqlDataReader reader; 
-                using (con)
-                {
-                    try
-                    {
-                        con.Open();
-                        reader = cmd.ExecuteReader(); 
-                        reader.Read(); 
-
-
-                        reader.Close();
-                        con.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
-                }
-
-            }
-
         }
-    }*/
+
+            protected void ddlTeretana_SelectedIndexChanged(object sender, EventArgs e)
+            {
+                SqlConnection conn = new SqlConnection(); 
+            conn.ConnectionString = Connection.conString; SqlDataReader reader;
+            string SqlSelect = "Select idOsobe AS idOSobe, Osoba.ime AS ime, Osoba.prezime AS prezime,Osoba.datumRodjenja AS datumRodjenja,Osoba.kontakt AS kontakt, Osoba.idTeretane AS idTeretane from Osoba";
+            if(ddl.SelectedItem.Text != "Selektujte teretanu:")
+                SqlSelect += " WHERE idTeretane = " + ddl.SelectedItem.Value;
+
+            SqlCommand cmd = new SqlCommand(SqlSelect, conn);
+            using (conn)
+            {
+                conn.Open();
+                reader = cmd.ExecuteReader();
+                DataTable dataTable = new DataTable();
+                dataTable.Columns.Add("idOsobe");
+                dataTable.Columns.Add("ime");
+                dataTable.Columns.Add("prezime");
+                dataTable.Columns.Add("datumRodjenja");
+                dataTable.Columns.Add("kontakt");
+                dataTable.Columns.Add("idTeretane");
+                while (reader.Read())
+                {
+                    DataRow row = dataTable.NewRow();
+                    row["idOsobe"] = reader["idOsobe"]; 
+                    row["ime"] = reader["ime"];
+                    row["prezime"] = reader["prezime"];
+                    row["datumRodjenja"] = reader["datumRodjenja"];
+                    row["kontakt"] = reader["kontakt"];
+                    row["idTeretane"] = reader["idTeretane"];
+                    dataTable.Rows.Add(row);
+                }
+                GridView1.DataSource = dataTable;
+                GridView1.DataBind();
+            }
         }
     }
-}
+        }
+    
         
