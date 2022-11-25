@@ -1,3 +1,9 @@
 ﻿body {
-    background-color: black;
+    background-image: url("slike/gym.jfif");
+    height:1000px;
+    background-size:cover;
+}
+#MainContent_GridView1{
+    background-color:red;
+    color:white;
 }

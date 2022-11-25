@@ -152,6 +152,9 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="slike\bucice.jpg" />
+    <Content Include="slike\gym.jfif" />
+    <Content Include="slike\teretana.jfif" />
     <Content Include="style.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />

@@ -6,6 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <link rel="stylesheet" href="style.css">
     <title><%: Page.Title %> - My ASP.NET Application</title>
 
     <asp:PlaceHolder runat="server">
@@ -60,9 +61,11 @@
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+            
+            
+            <footer style=" position: fixed;left: 0;bottom: 0;width: 100%;color: white;text-align: center;">
+                <hr />
+                <p >&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
             </footer>
         </div>
 
