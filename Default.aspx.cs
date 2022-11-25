@@ -42,12 +42,12 @@ namespace Teretana
             }
         }
 
-            protected void ddlTeretana_SelectedIndexChanged(object sender, EventArgs e)
-            {
-                SqlConnection conn = new SqlConnection(); 
+        protected void ddlTeretana_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection();
             conn.ConnectionString = Connection.conString; SqlDataReader reader;
             string SqlSelect = "Select idOsobe AS idOSobe, Osoba.ime AS ime, Osoba.prezime AS prezime,Osoba.datumRodjenja AS datumRodjenja,Osoba.kontakt AS kontakt, Osoba.idTeretane AS idTeretane from Osoba";
-            if(ddl.SelectedItem.Text != "Selektujte teretanu:")
+            if (ddl.SelectedItem.Text != "Selektujte teretanu:")
                 SqlSelect += " WHERE idTeretane = " + ddl.SelectedItem.Value;
 
             SqlCommand cmd = new SqlCommand(SqlSelect, conn);
@@ -65,7 +65,7 @@ namespace Teretana
                 while (reader.Read())
                 {
                     DataRow row = dataTable.NewRow();
-                    row["idOsobe"] = reader["idOsobe"]; 
+                    row["idOsobe"] = reader["idOsobe"];
                     row["ime"] = reader["ime"];
                     row["prezime"] = reader["prezime"];
                     row["datumRodjenja"] = reader["datumRodjenja"];
@@ -77,7 +77,37 @@ namespace Teretana
                 GridView1.DataBind();
             }
         }
-    }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Obrisi")
+            {
+                SqlConnection con = new SqlConnection(Connection.conString);
+                int rowIndex = Int32.Parse(e.CommandArgument.ToString());
+                string osobaId = GridView1.Rows[rowIndex].Cells[0].Text;
+
+                string SqlDelete = "Delete from Osoba where idOsobe= " + osobaId;
+                SqlCommand cmd = new SqlCommand(SqlDelete, con);
+                int deleted = 0;
+
+                using (con)
+                {
+                    try
+                    {
+                        con.Open();
+                        deleted = cmd.ExecuteNonQuery();
+                        Response.Redirect("~/Default.aspx");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
         }
+    }
+}
+
+        
     
         
