@@ -45,7 +45,8 @@ namespace Teretana
         protected void ddlTeretana_SelectedIndexChanged(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = Connection.conString; SqlDataReader reader;
+            conn.ConnectionString = Connection.conString; 
+            SqlDataReader reader;
             string SqlSelect = "Select idOsobe AS idOSobe, Osoba.ime AS ime, Osoba.prezime AS prezime,Osoba.datumRodjenja AS datumRodjenja,Osoba.kontakt AS kontakt, Osoba.idTeretane AS idTeretane from Osoba";
             if (ddl.SelectedItem.Text != "Selektujte teretanu:")
                 SqlSelect += " WHERE idTeretane = " + ddl.SelectedItem.Value;
