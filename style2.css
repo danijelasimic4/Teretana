@@ -1,0 +1,31 @@
+﻿body {
+    background-image: url("slike/gym.jfif");
+    height: 1000px;
+    background-size: cover;
+    font-family: 'Lora', serif;
+}
+
+#MainContent_GridView1 {
+    background-color: black;
+    color: white;
+    margin: auto;
+    text-align:center;
+    border: 3px solid white;
+}
+#MainContent_ddl {
+    background-color: black;
+    color: white;
+    margin: auto;
+}
+.about{
+    margin-left:35%;
+}
+.div1{
+    margin-left:30%;
+}
+.div2{
+    margin-left:37%;
+
+}
+
+

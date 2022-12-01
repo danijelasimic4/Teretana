@@ -6,9 +6,11 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <link rel="stylesheet" href="style.css">
+          <link rel="stylesheet" href="style2.css">
     <title><%: Page.Title %> - My ASP.NET Application</title>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&family=Zen+Dots&display=swap" rel="stylesheet">
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
@@ -65,7 +67,7 @@
             
             <footer style=" position: fixed;left: 0;bottom: 0;width: 100%;color: white;text-align: center;">
                 <hr />
-                <p >&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <p >&copy; <%: DateTime.Now.Year %> -@Danijela Simic-Miodrag Bukvic</p>
             </footer>
         </div>
 

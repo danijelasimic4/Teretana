@@ -3,9 +3,9 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
       
     <h1 style="text-align:center;">Prikaz</h1>
-     <link rel="stylesheet" href="style.css">
-    Izaberite teretanu:<asp:DropDownList ID="ddl" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlTeretana_SelectedIndexChanged"></asp:DropDownList>
-    <br />
+     <link rel="stylesheet" href="style2.css">
+    <div class="div2">Izaberite teretanu:<asp:DropDownList ID="ddl" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlTeretana_SelectedIndexChanged"></asp:DropDownList></div>
+
     <br />
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" >
         <Columns>
