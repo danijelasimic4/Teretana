@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="Teretana.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <br />
     <div class="about">
         <h1>Unos novih clanova</h1>
         Ime:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
@@ -19,6 +20,7 @@
         <br />
         <br />
         <asp:Button ID="btnDodaj" runat="server" Text="Dodaj" OnClick="btnDodaj_Click" />
+        <br /><br />
     </div> <link rel="stylesheet" href="style2.css">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:TeretanaConnectionString2 %>" SelectCommand="SELECT * FROM [Osoba]"></asp:SqlDataSource>
 </asp:Content>
